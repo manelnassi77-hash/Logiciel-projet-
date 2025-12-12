@@ -9,24 +9,23 @@ import pandas as pd
 
 # Tableau des séquences ADN
 data = {
-    "Séquence": [
-        "ATGCGTACGTA",
+    "Séquence":
+       [ "ATGCGTACGTA",
         "GCTAGCTAGGCC",
         "ATGCCGCTAAGT",
         "TACGTACTGA",
         "ATGAAAGGCTT",
         "CGTAGCTAGC",
-        "TTAACCGGAT"
-    ],
+        "TTAACCGGAT" ]
     "Longueur": [12, 12, 12, 10, 11, 10, 10],
     "Pourcentage GC": [50, 66.67, 58.33, 40, 45.45, 60, 50]
 
-# 1) Créer et afficher le tableau avec pandas
+# 1) Créer et afficher le tableau avec pandas : 
 df = pd.DataFrame(data)
 print("Tableau initial :")
 print(df)
 
-# 2) Sélectionner et afficher uniquement la colonne Longueur
+# 2) Sélectionner et afficher uniquement la colonne Longueur : 
 print("\nColonne Longueur :")
 print(df["Longueur"])
 
@@ -35,11 +34,11 @@ filtre = df[df["Longueur"] > 10]
 print("\nSéquences avec Longueur > 10 :")
 print(filtre)
 
-# 4) Calculer le pourcentage moyen de GC (3 chiffres)
+# 4) Calculer le pourcentage moyen de GC (3 chiffres) : 
 moy_gc = df["Pourcentage GC"].mean()
 print("\nPourcentage moyen de GC (3 chiffres) :", round(moy_gc, 3))
 
-# 5) Ajouter une colonne Catégorie GC
+# 5) Ajouter une colonne Catégorie GC : 
 def categorize(gc):
     if gc > 55:
         return "Riche"
@@ -50,16 +49,16 @@ def categorize(gc):
 
 df["Catégorie GC"] = df["Pourcentage GC"].apply(categorize)
 
-# 6) Ajouter une colonne donnant le nombre de 'G'
+# 6) Ajouter une colonne donnant le nombre de 'G' : 
 df["Nombre_G"] = df["Séquence"].apply(lambda seq: seq.count("G"))
 
-# 7) Calcul de l'écart-type du %GC et longueur
+# 7) Calcul de l'écart-type du %GC et longueur : 
 ecart_gc = df["Pourcentage GC"].std()
 ecart_longueur = df["Longueur"].std()
 
 print("\nÉcart-type du %GC :", round(ecart_gc, 3))
 print("Écart-type de la longueur :", round(ecart_longueur, 3))
 
-# 8) sauvegarder le tableau final dans un fichier 
+# 8) sauvegarder le tableau final dans un fichier :
 
 CSV df.to_CSV("résultats_final.csv,index=false)print("\nLe fichier "résultat final.csv a été créé avec succès) 
