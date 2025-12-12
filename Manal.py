@@ -60,10 +60,6 @@ ecart_longueur = df["Longueur"].std()
 print("\nÉcart-type du %GC :", round(ecart_gc, 3))
 print("Écart-type de la longueur :", round(ecart_longueur, 3))
 
-# 8) Sauvegarder le tableau final dans un fichier CSV
-df.to_csv("resultat_final.csv", index=False)
-print("\nLe fichier 'resultat_final.csv' a été créé avec succès.")
-
 
 
 
